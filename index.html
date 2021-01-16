@@ -13,6 +13,30 @@
 
 <body>
 
+  <div class="container my-5 mx-auto">
+
+    <h1 class="text-muted text-center my-4">Wetter</h1>
+
+    <form class="change-location my-4 text-center text-muted">
+      <input type="text" name="city" class="form-control p-4 text-center" placeholder="Standort eingeben">
+    </form>
+
+    <div class="card shadow-lg rounded d-none">
+      <div class="icon bg light mx-auto text-center">
+        <!--      Icon Platzhalter -->
+      </div>
+      <div class="text-muted text-uppercase text-center details">
+        <h5 class="my-3">Stadt</h5>
+        <div class="my-3">Wetterlage</div>
+        <div class="display-4 my-4">
+          <span>Temperatur</span>
+          <span>&deg;C</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
   <script src="scripts/forecast.js"></script>
   <script src="scripts/app.js"></script>
 </body>

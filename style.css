@@ -1,0 +1,33 @@
+body {
+  background: #eeeeee;
+  letter-spacing: 0.2em;
+  font-size: 0.8em;
+}
+
+.container {
+  max-width: 400px;
+}
+
+.form-control::placeholder {
+  color: #b4b3b3;
+}
+
+.animation-border {
+  animation: blink 2s 1;
+  border-color: #b4b3b3;
+  border-width: 1px;
+}
+
+@keyframes blink {
+  0% {
+    border-color: #b4b3b3;
+  }
+
+  50% {
+    border-color: rgb(0, 140, 255);
+  }
+
+  100% {
+    border-color: #b4b3b3;
+  }
+}
