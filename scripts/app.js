@@ -19,7 +19,7 @@ const permissionDenied = () => {
 };
 
 /* Nachfrage User Location */
-navigator.geolocation.getCurrentPosition(permissionSuccess, permissionDenied);
+window.navigator.geolocation.getCurrentPosition(permissionSuccess, permissionDenied);
 
 /* Anzeige auf der Card */
 const displayCard = (data) => {
