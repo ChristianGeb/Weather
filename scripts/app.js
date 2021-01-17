@@ -2,7 +2,6 @@ const cityForm = document.querySelector("form");
 const card = document.querySelector(".card");
 const details = document.querySelector(".details");
 const time = document.querySelector("img.time");
-const icon = document.querySelector(".icon");
 const border = document.querySelector(".form-control");
 const forecast = document.querySelector(".forecast");
 
@@ -26,33 +25,44 @@ window.navigator.geolocation.getCurrentPosition(permissionSuccess, permissionDen
 /* Anzeige auf der Card */
 const displayCard = (data, forecastData) => {
 
-  /* Daten anzeigen */
+  /* Aktuelle Wetterdaten anzeigen */
   details.innerHTML = `
-  <h5 class="my-3">${data.name}</h5>
+    <div class="icon bg light mx-auto text-center">
+      <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Wetter Symbol">
+       </div>
+        <h5 class="my-3">${data.name}</h5>
         <div class="my-3">${data.weather[0].description}</div>
         <div class="display-4 my-4">
           <span>${Math.round(data.main.temp)}</span>
           <span>&deg;C</span>
         </div>
+        <div class="mt-5 mb-2">Vorhersage</div>
   `;
 
-  /* Wetter icons setzen */
-  icon.innerHTML = `
-  <div class="icon bg light mx-auto text-center">
-  <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Wetter Symbol">
-  </div>
-  `;
+  /* Vorhersage auf die Karte setzen */
+  for (let i = 1; i < 7; i++) {
 
-  for (let i = 1; i < 8; i++) {
+    const milliseconds = forecastData.daily[i].dt * 1000;
+    const dateObject = new Date(milliseconds).toLocaleDateString("de-DE", {
+      day: "numeric",
+      month: "long"
+    });
+
     forecast.innerHTML += `
-      <div class="col">
+      <div class="col my-4">
+        <div>${dateObject}</div>
         <img src="http://openweathermap.org/img/wn/${forecastData.daily[i].weather[0].icon}@2x.png" alt="Wetter Symbol">
-         <div class="my-1">
+         <div>
          <span>${Math.round(forecastData.daily[i].temp.day)}</span>
          <span>&deg;C</span>
       </div>
-    </div>`;
-  }
+    </div>
+    `;
+  };
+
+
+
+  console.log(dateObject);
 
   /* d-none Klasse entfernen falls vorhanden */
   if (card.classList.contains("d-none")) {

@@ -24,6 +24,5 @@ const getForecast = async (lat, lon) => {
 
   const response = await fetch(api);
   const data = await response.json();
-  console.log(data);
   return data;
 }
