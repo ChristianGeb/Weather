@@ -32,7 +32,7 @@ const displayCard = (data, forecastData) => {
        </div>
         <h5 class="my-3">${data.name}</h5>
         <div class="my-3">${data.weather[0].description}</div>
-        <div class="display-4 my-4">
+        <div class="display-4 my-2">
           <span>${Math.round(data.main.temp)}</span>
           <span>&deg;C</span>
         </div>
@@ -42,6 +42,7 @@ const displayCard = (data, forecastData) => {
   /* Vorhersage auf die Karte setzen */
   for (let i = 1; i < 7; i++) {
 
+    /* Datum konvertieren */
     const milliseconds = forecastData.daily[i].dt * 1000;
     const dateObject = new Date(milliseconds).toLocaleDateString("de-DE", {
       day: "numeric",
@@ -59,10 +60,6 @@ const displayCard = (data, forecastData) => {
     </div>
     `;
   };
-
-
-
-  console.log(dateObject);
 
   /* d-none Klasse entfernen falls vorhanden */
   if (card.classList.contains("d-none")) {
