@@ -4,13 +4,15 @@ const details = document.querySelector(".details");
 const time = document.querySelector("img.time");
 const icon = document.querySelector(".icon");
 const border = document.querySelector(".form-control");
+const forecast = document.querySelector(".forecast");
 
 
 
 /* User Location erlaubt */
 const permissionSuccess = async (position) => {
   const weather = await getWeatherByPermission(position.coords.latitude, position.coords.longitude);
-  displayCard(weather);
+  const forecastData = await getForecast(position.coords.latitude, position.coords.longitude);
+  displayCard(weather, forecastData);
 }
 
 /* User Location abgelehnt */
@@ -22,7 +24,7 @@ const permissionDenied = () => {
 window.navigator.geolocation.getCurrentPosition(permissionSuccess, permissionDenied);
 
 /* Anzeige auf der Card */
-const displayCard = (data) => {
+const displayCard = (data, forecastData) => {
 
   /* Daten anzeigen */
   details.innerHTML = `
@@ -41,6 +43,17 @@ const displayCard = (data) => {
   </div>
   `;
 
+  for (let i = 1; i < 8; i++) {
+    forecast.innerHTML += `
+      <div class="col">
+        <img src="http://openweathermap.org/img/wn/${forecastData.daily[i].weather[0].icon}@2x.png" alt="Wetter Symbol">
+         <div class="my-1">
+         <span>${Math.round(forecastData.daily[i].temp.day)}</span>
+         <span>&deg;C</span>
+      </div>
+    </div>`;
+  }
+
   /* d-none Klasse entfernen falls vorhanden */
   if (card.classList.contains("d-none")) {
     card.classList.remove("d-none");
@@ -50,8 +63,8 @@ const displayCard = (data) => {
 /* Ausgelesene Stadt benutzen um Wetter abzurufen */
 const setCity = async (city) => {
   const weather = await getWeather(city);
-  console.log(weather);
-  return weather
+  const forecastData = await getForecast(weather.coord.lat, weather.coord.lon);
+  displayCard(weather, forecastData);
 };
 
 /* Name Stadt auslesen */
@@ -59,8 +72,5 @@ cityForm.addEventListener("submit", e => {
   e.preventDefault();
   const city = cityForm.city.value.trim();
   cityForm.reset();
-
-  setCity(city)
-    .then(data => displayCard(data))
-    .catch(err => console.log(err));
+  setCity(city);
 });
