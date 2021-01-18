@@ -29,6 +29,7 @@ window.navigator.geolocation.getCurrentPosition(permissionSuccess, permissionDen
 /* Anzeige auf der Card */
 const displayCard = (data, forecastData) => {
 
+  /* Box vor dem Laden verstecken */
   card.classList.add("rounded-corner");
 
   /* Title ändern */
