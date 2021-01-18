@@ -23,8 +23,6 @@ const permissionDenied = () => {
   cityInput.classList.remove("d-none");
 };
 
-/* Nachfrage User Location */
-window.navigator.geolocation.getCurrentPosition(permissionSuccess, permissionDenied);
 
 /* Anzeige auf der Card */
 const displayCard = (data, forecastData) => {
@@ -103,4 +101,14 @@ cityForm.addEventListener("submit", e => {
   const city = cityForm.city.value.trim();
   cityForm.reset();
   setCity(city);
+  localStorage.setItem("city", city);
 });
+
+/* Stadt im LocalStorage speichern */
+if (localStorage.getItem("city")) {
+  setCity(localStorage.getItem("city"));
+  cityInput.classList.remove("d-none");
+} else {
+  /* Nachfrage User Location */
+  window.navigator.geolocation.getCurrentPosition(permissionSuccess, permissionDenied);
+}

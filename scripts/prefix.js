@@ -24,7 +24,6 @@ const declarePrefix = (data) => {
 /* Hintergrund Farbe nach Tageszeit anpassen */
 const themeSwitcher = () => {
   const themeSwitcher = document.querySelector(".themeSwitcher");
-  console.log(themeSwitcher.classList);
   if (themeSwitcher.classList.contains("night")) {
     body.classList.replace("light", "dark")
   } else {
