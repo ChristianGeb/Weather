@@ -41,15 +41,15 @@ const displayCard = (data, forecastData) => {
   details.innerHTML = `
     <div class="icon bg light mx-auto text-center">
     <div class="row">
-    <div class="col-7 ps-3">
-  <i class="my-3 themeSwitcher ${declarePrefix(data)}" style="font-size: 80px;"></i>
+    <div class="col-7 ps-3 mb-3">
+  <i class="mb-3 mt-5 themeSwitcher ${declarePrefix(data)}" style="font-size:80px;"></i>
     <div>${data.weather[0].description}</div>
     <h3 class="mb-3 bold">
       <span>${Math.round(data.main.temp * 10) / 10}</span>
       <span>&deg;C</span>
       </h3>
     </div>
-    <div class="col-5 pe-5 mt-3 text-end">
+    <div class="col-5 pe-5 mt-5 mb-3 text-end">
     <div class="bold">Luftfeuchte</div>
     <div class="mb-2">${Math.round(data.main.humidity * 10) / 10}%</div>
     <div class="bold">Gefühlt</div>
