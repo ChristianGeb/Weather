@@ -71,6 +71,6 @@ body {
   to {
     opacity: 0.1;
     transform: translate(0, -20px);
-    background: rgb(177, 207, 255);
+    background: rgb(255, 255, 255);
   }
 }
