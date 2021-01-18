@@ -5,7 +5,7 @@ const cityInput = document.querySelector(".change-location");
 const forecast = document.querySelector(".forecast");
 const card = document.querySelector(".card");
 const title = document.querySelector(".titleName");
-
+const body = document.body;
 
 
 /* User Location erlaubt */
@@ -41,7 +41,7 @@ const displayCard = (data, forecastData) => {
     <div class="icon bg light mx-auto text-center">
     <div class="row">
     <div class="col-7 ps-3">
-  <i class="my-3 ${declarePrefix(data)}" style="font-size: 80px;"></i>
+  <i class="my-3 themeSwitcher ${declarePrefix(data)}" style="font-size: 80px;"></i>
     <div>${data.weather[0].description}</div>
     <h3 class="mb-3 bold">
       <span>${Math.round(data.main.temp * 10) / 10}</span>
@@ -60,6 +60,9 @@ const displayCard = (data, forecastData) => {
   </div>
   </div>
   `;
+
+  /* Hintergrund Farbe nach Tageszeit anpassen */
+  themeSwitcher();
 
   /* Vorhersage auf die Karte setzen */
   forecast.innerHTML = ``;

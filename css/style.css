@@ -1,11 +1,23 @@
 body {
-  background: background: #02D2B4;
-  background: -webkit-linear-gradient(top left, #02D2B4, #4348B7);
-  background: -moz-linear-gradient(top left, #02D2B4, #4348B7);
-  background: linear-gradient(to bottom right, #02D2B4, #4348B7);
+  background: background: var(--bg);
+  background: -webkit-linear-gradient(top left, var(--grad-first), var(--grad-second));
+  background: -moz-linear-gradient(top left, var(--grad-first), var(--grad-second));
+  background: linear-gradient(to bottom right, var(--grad-first), var(--grad-second));
   letter-spacing: 0.05em;
   color: white;
   height: 100vh;
+}
+
+.light {
+  --bg: #02D2B4;
+  --grad-first: #02D2B4;
+  --grad-second: #4348B7;
+}
+
+.dark {
+  --bg: #1E1743;
+  --grad-first: #1E1743;
+  --grad-second: #572d74;
 }
 
 .bold {
@@ -65,7 +77,6 @@ body {
 .loading-animation>div:nth-child(3) {
   animation-delay: 0.5s;
 }
-
 
 @keyframes loading-animation {
   to {

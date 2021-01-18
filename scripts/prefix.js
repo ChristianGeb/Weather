@@ -16,7 +16,18 @@ const declarePrefix = (data) => {
     let weatherIconID = `wi wi-owm-day-${data.weather[0].id}`;
     return weatherIconID
   } else {
-    let weatherIconID = `wi wi-owm-night-${data.weather[0].id}`;
+    let weatherIconID = `night wi wi-owm-night-${data.weather[0].id}`;
     return weatherIconID
+  }
+};
+
+/* Hintergrund Farbe nach Tageszeit anpassen */
+const themeSwitcher = () => {
+  const themeSwitcher = document.querySelector(".themeSwitcher");
+  console.log(themeSwitcher.classList);
+  if (themeSwitcher.classList.contains("night")) {
+    body.classList.replace("light", "dark")
+  } else {
+    body.classList.replace("dark", "light");
   }
 };
