@@ -98,11 +98,19 @@ const setCity = async (city) => {
 cityForm.addEventListener("submit", e => {
   e.preventDefault();
   loadingAnimation.classList.remove("d-none");
-  const city = cityForm.city.value.trim();
+  let city = cityForm.city.value.trim().split(',')[0];
   cityForm.reset();
   setCity(city);
   localStorage.setItem("city", city);
 });
+
+/* Autocomplete by Algolia Places*/
+const options = {
+  appId: 'plYMAHYD0NXC',
+  apiKey: 'db63586e63c3527a2807dda4902e536e',
+  container: document.querySelector("#input"),
+};
+places(options);
 
 /* Stadt im LocalStorage speichern */
 if (localStorage.getItem("city")) {
